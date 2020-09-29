@@ -12,7 +12,7 @@ namespace PizzaStore
         private string _size;
         private double _price;
 
-
+        private Topping _topping;
 
 
         public int Number
@@ -30,6 +30,12 @@ namespace PizzaStore
         {
             get { return _price; }
             set { _price = value; }
+        }
+
+        public Topping Topping
+        {
+            get { return _topping; }
+            set { _topping = value; }
         }
     }
 }
