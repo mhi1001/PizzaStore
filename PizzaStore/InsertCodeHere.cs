@@ -17,19 +17,19 @@ namespace PizzaStore
 
             Pizza pizza1 = new Pizza();
             pizza1.Size = "Medium";
-            pizza1.Name = $"{topping1.Type} pizza"; 
+            pizza1.Name = $"{topping1.Type} flavour pizza"; 
             pizza1.Price = 70.79;
             pizza1.Topping = topping1;
 
             Pizza pizza2 = new Pizza();
             pizza2.Size = "Small";
-            pizza2.Name = $"{topping2.Type} pizza"; 
+            pizza2.Name = $"{topping2.Type} flavour pizza"; 
             pizza2.Price = 40.39;
             pizza2.Topping = topping2;
 
             Pizza pizza3 = new Pizza();
             pizza3.Size = "Large";
-            pizza3.Name = $"{topping3.Type} pizza";
+            pizza3.Name = $"{topping3.Type} flavour pizza";
             pizza3.Price = 70.60;
             pizza3.Topping = topping3;
 
@@ -65,20 +65,20 @@ namespace PizzaStore
 
             double totalOrder1 = order1.CalculateTotalPrice();
 
+            //As the owner, i want to get the OrderID, name of the pizza and the total price for it
             Console.WriteLine($"The order ID {order1.OrderId} at time {order1.Date} :\n" +
                               $"Pizza name is {order1.Pizza.Name}, with topping {order1.Pizza.Topping}\n" +
-                              $"Customer name is {order1.Customer.Name}\n" +
                               $"Total price of the order with tax+delivery is {order1.CalculateTotalPrice()}\n\n");
 
-            Console.WriteLine($"The order ID {order2.OrderId} at time {order2.Date} :\n" +
-                              $"Pizza name is {order2.Pizza.Name}, with topping {order2.Pizza.Topping}\n" +
-                              $"Customer name is {order2.Customer.Name}\n" +
-                              $"Total price of the order tax+delivery is {order2.CalculateTotalPrice()}\n\n");
+            //As the owner, I want to display the name of the customer of a specific order
+            // Using order1.Customer instead of order1.Customer.Name to take advantage of the override ToString method
+            Console.WriteLine($"The order {order1.OrderId} was made by the customer {order1.Customer} ");
 
-            Console.WriteLine($"The order ID {order3.OrderId} at time {order3.Date} :\n" +
-                              $"Pizza name is {order3.Pizza.Name}, with topping {order3.Pizza.Topping}\n" +
-                              $"Customer name is {order3.Customer.Name}\n" +
-                              $"Total price of the order tax+delivery is {order3.CalculateTotalPrice()}\n\n");
+            //As the owner I want to have all the information of the customers to be able to deliver/contact
+
+            Console.WriteLine($"The customer {customer1.Name} details are : \n" +
+                              $"Email : {customer1.Email}\nAddress : {customer1.Address}\nPhone: {customer1.Phone}\n");
+
 
         }
     }

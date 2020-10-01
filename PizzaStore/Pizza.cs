@@ -37,5 +37,10 @@ namespace PizzaStore
             get { return _topping; }
             set { _topping = value; }
         }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }
