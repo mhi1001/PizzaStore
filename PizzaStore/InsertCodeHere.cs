@@ -66,19 +66,19 @@ namespace PizzaStore
             double totalOrder1 = order1.CalculateTotalPrice();
 
             Console.WriteLine($"The order ID {order1.OrderId} at time {order1.Date} :\n" +
-                              $"Pizza name is {order1.Pizza.Name}\n" +
+                              $"Pizza name is {order1.Pizza.Name}, with topping {order1.Pizza.Topping}\n" +
                               $"Customer name is {order1.Customer.Name}\n" +
-                              $"Total price of the order is {order1.CalculateTotalPrice()}\n\n");
+                              $"Total price of the order with tax+delivery is {order1.CalculateTotalPrice()}\n\n");
 
             Console.WriteLine($"The order ID {order2.OrderId} at time {order2.Date} :\n" +
-                              $"Pizza name is {order2.Pizza.Name}\n" +
+                              $"Pizza name is {order2.Pizza.Name}, with topping {order2.Pizza.Topping}\n" +
                               $"Customer name is {order2.Customer.Name}\n" +
-                              $"Total price of the order is {order2.CalculateTotalPrice()}\n\n");
+                              $"Total price of the order tax+delivery is {order2.CalculateTotalPrice()}\n\n");
 
             Console.WriteLine($"The order ID {order3.OrderId} at time {order3.Date} :\n" +
-                              $"Pizza name is {order3.Pizza.Name}\n" +
+                              $"Pizza name is {order3.Pizza.Name}, with topping {order3.Pizza.Topping}\n" +
                               $"Customer name is {order3.Customer.Name}\n" +
-                              $"Total price of the order is {order3.CalculateTotalPrice()}\n\n");
+                              $"Total price of the order tax+delivery is {order3.CalculateTotalPrice()}\n\n");
 
         }
     }
