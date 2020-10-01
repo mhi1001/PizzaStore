@@ -47,6 +47,11 @@ namespace PizzaStore
 
         }
 
+        public double CalculateTotalPrice()
+        {
+            return Pizza.Price + Pizza.Topping.Price + 40;
+        }
+
         public override string ToString()
         {
             return $"{OrderId}";

@@ -8,17 +8,17 @@ namespace PizzaStore
 {
     class Pizza
     {
-        private int _number;
+        private string _name;
         private string _size;
         private double _price;
 
         private Topping _topping;
 
 
-        public int Number
+        public String Name
         {
-            get { return _number; }
-            set { _number = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
         public string Size
