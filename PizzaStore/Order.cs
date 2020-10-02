@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PizzaStore
 {
-    class Order
+   public class Order
     {
         private int _orderId;
         private DateTime _date;

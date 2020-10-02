@@ -14,7 +14,7 @@ namespace PizzaStore
             theCode.MyCode();
 
             Console.WriteLine();
-            Console.WriteLine("Press any key to close the program...");
+            Console.WriteLine("Thank you for using my program");
 
             Console.ReadKey();
         }
