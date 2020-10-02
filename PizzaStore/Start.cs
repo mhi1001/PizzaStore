@@ -17,7 +17,7 @@ namespace PizzaStore
                 showMenu = MainMenu();
             }
         }
-        private static bool MainMenu()
+        private bool MainMenu()
         {
             Topping topping1 = new Topping(); topping1.Type = "Pepperoni"; topping1.Price = 8.5;
             Topping topping2 = new Topping(); topping2.Type = "Ham"; topping2.Price = 10.5;
@@ -81,9 +81,11 @@ namespace PizzaStore
             Console.Write("1 -> As the owner, I want to display the ID, name of the pizzas and the total price for a single order\n\n" +
                           "2 -> As the owner/waiter, I want to display the name of the customer who made a specific order\n\n" +
                           "3 -> As a customer I want to know the total price\n\n" +
-                          "4 -> Exit Program\n\n");
+                          "4 -> As the owner, I want to know the specific order, who ordered it and contact/address details to deliver\n\n" +
+                          "5 -> As a customer I want to know how much I am paying for toppings\n\n" +
+                          "6 -> Exit Program\n\n");
             Console.Write("\nInput your choice :");
-            
+
 
             switch (Console.ReadLine())
             {
@@ -110,7 +112,7 @@ namespace PizzaStore
 
                 case "3":
                     Console.Clear();
-                    //As a customer I want to know the total price
+                    //8.As a customer I want to know the total price
                     Console.WriteLine($"My name is {order1.Customer} and I ordered a {order1.Pizza} that was {order1.Pizza.Price} kr" +
                                       $"\nplus the {order1.Pizza.Topping} topping which was {order1.Pizza.Topping.Price}kr \n" +
                                       $"plus 40 kr tax/delivery which led me to pay {order1.CalculateTotalPrice()} kr\n\n");
@@ -127,6 +129,35 @@ namespace PizzaStore
                     return true;
 
                 case "4":
+                    //3.As the owner I want to know the address, contact info of the customer
+                    //and the full description of the order, so I can do the delivery correctly.
+                    Console.Clear();
+                    Console.WriteLine($"The customer {order1.Customer} with the orderID of : {order1.OrderId}, ordered a {order1.Pizza}" +
+                                      $"\n with the {order1.Pizza.Topping} topping, and lives in {order1.Customer.Address} " +
+                                      $"with the contact of {order1.Customer.Phone} and {order1.Customer.Email}\n\n");
+
+                    Console.WriteLine($"The customer {order2.Customer} with the orderID of : {order2.OrderId}, ordered a {order2.Pizza}" +
+                                      $"\n with the {order2.Pizza.Topping} topping, and lives in {order2.Customer.Address} " +
+                                      $"with the contact of {order2.Customer.Phone} and {order2.Customer.Email}\n\n");
+
+                    Console.WriteLine($"The customer {order3.Customer} with the orderID of : {order3.OrderId}, ordered a {order3.Pizza}" +
+                                      $"\n with the {order3.Pizza.Topping} topping, and lives in {order3.Customer.Address} " +
+                                      $"with the contact of {order3.Customer.Phone} and {order3.Customer.Email}\n\n");
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
+                case "5":
+                    //7.As a customer I want to know how much I am paying for toppings
+                    Console.Clear();
+                    Console.WriteLine($"{order1.Customer} is paying {order1.Pizza.Topping.Price} kr for {order1.Pizza.Topping} topping.\n\n");
+                    Console.WriteLine($"{order2.Customer} is paying {order2.Pizza.Topping.Price} kr for {order2.Pizza.Topping} topping.\n\n");
+                    Console.WriteLine($"{order3.Customer} is paying {order3.Pizza.Topping.Price} kr for {order3.Pizza.Topping} topping.\n\n");
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
+                case "6":
                     return false;
 
                 default:
