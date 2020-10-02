@@ -10,8 +10,8 @@ namespace PizzaStore
     {
         static void Main(string[] args)
         {
-            InsertCodeHere TheCode = new InsertCodeHere();
-            TheCode.MyCode();
+            Start theCode = new Start();
+            theCode.MyCode();
 
             Console.WriteLine();
             Console.WriteLine("Press any key to close the program...");
