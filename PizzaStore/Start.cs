@@ -11,6 +11,8 @@ namespace PizzaStore
     {
         public void MyCode()
         {
+            //created private class only for this Start class, with all the content so i could call it
+            //here inside MyCode so it would be easier to make this little menu.
             bool showMenu = true;
             while (showMenu)
             {
