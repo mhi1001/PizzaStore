@@ -12,10 +12,9 @@ namespace PizzaStore
         private string _size;
         private double _price;
 
-        private Topping _topping;
+        private List<Ingredients> _ingredients = new List<Ingredients>();
 
-
-        public String Name
+        public string Name
         {
             get { return _name; }
             set { _name = value; }
@@ -32,12 +31,26 @@ namespace PizzaStore
             set { _price = value; }
         }
 
-        public Topping Topping
+        public List<Ingredients> Ingredients
         {
-            get { return _topping; }
-            set { _topping = value; }
+            get { return _ingredients; }
+            set { _ingredients = value; }
         }
 
+        public void AddIngredients(Ingredients ingredient)
+        {
+            _ingredients.Add(ingredient);
+        }
+
+        public void ListPizzaIngredients()
+        {
+            foreach (Ingredients i in _ingredients)
+            {
+                Console.WriteLine(i.Name);
+            }
+
+
+        }
         public override string ToString()
         {
             return $"{Name}";

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace PizzaStore
 {
-    public class Topping
+    public class Ingredients
     {
-        private string _type;
+        private string _name;
         private double _price;
 
 
-        public string Type
+        public string Name
         {
-            get { return _type; }
-            set { _type = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
         public double Price
@@ -24,9 +24,9 @@ namespace PizzaStore
             set { _price = value; }
         }
 
-        public override string ToString()
-        {
-            return $"{Type}";
-        }
+        //public override string ToString()
+        //{
+        //     return $"{Name}";
+        //}
     }
 }

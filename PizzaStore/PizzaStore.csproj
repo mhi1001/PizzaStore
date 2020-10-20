@@ -44,12 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="Start.cs" />
+    <Compile Include="MenuCatalog.cs" />
+    <Compile Include="Store.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Pizza.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Topping.cs" />
+    <Compile Include="Ingredients.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

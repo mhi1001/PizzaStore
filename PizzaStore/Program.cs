@@ -10,8 +10,8 @@ namespace PizzaStore
     {
         static void Main(string[] args)
         {
-            Start theCode = new Start();
-            theCode.MyCode();
+            Store store = new Store();
+            store.Start();
 
             Console.WriteLine();
             Console.WriteLine("Thank you for using my program");

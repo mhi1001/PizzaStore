@@ -10,7 +10,7 @@ namespace PizzaStore
     {
         private int _orderId;
         private DateTime _date;
-
+        
         private Customer _customer;
         private Pizza _pizza;
 
@@ -47,10 +47,10 @@ namespace PizzaStore
 
         }
 
-        public double CalculateTotalPrice()
-        {
-            return Pizza.Price + Pizza.Topping.Price + 40;
-        }
+        //public double CalculateTotalPrice()
+        //{
+        //  //  return Pizza.Price + Pizza.ExistingIngredients.
+        //}
         
 
         public override string ToString()
