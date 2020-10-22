@@ -12,13 +12,15 @@ namespace PizzaStore
         private DateTime _date;
         
         private Customer _customer;
-        private Pizza _pizza;
+        
+        private Dictionary<int, Pizza> _pizza;
+        
+        
 
         public Order(int id, DateTime date)
         {
             _customer = new Customer();
-            _pizza = new Pizza();
-
+            _pizza = new Dictionary<int, Pizza>();
             _orderId = id;
             _date = date;
         }
@@ -40,20 +42,26 @@ namespace PizzaStore
             set { _customer = value; }
         }
 
-        public Pizza Pizza
+        public Dictionary<int, Pizza> Pizza
         {
             get { return _pizza; }
             set { _pizza = value; }
 
         }
 
-        //public double CalculateTotalPrice()
-        //{
-        //  //  return Pizza.Price + Pizza.ExistingIngredients.
-        //}
-        
+        public double CalculateTotalPrice() //calculates the price of all pizza and all of its ingredients + 40 kr tax inside an order
+        {
+           double totalPizzaPrice = _pizza.Values.Sum(pizza =>pizza.Price);
+           double totalIngredientPrice = _pizza.Values.Sum(pizza => pizza.Ingredients.Sum(ingredients => ingredients.Price));
+           
+            return totalPizzaPrice + totalIngredientPrice + 40;
+        }
 
-        public override string ToString()
+        public void AddPizzaToOrder(int key, Pizza pizza)
+        {
+            Pizza.Add(key, pizza);
+        }
+          public override string ToString()
         {
             return $"{OrderId}";
         }

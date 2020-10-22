@@ -9,11 +9,20 @@ namespace PizzaStore
     public class Pizza
     {
         private string _name;
+        private int _id;
         private string _size;
         private double _price;
+        private List<Ingredients> _ingredients;
 
-        private List<Ingredients> _ingredients = new List<Ingredients>();
-
+        public Pizza()
+        {
+            _ingredients = new List<Ingredients>();
+        }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         public string Name
         {
             get { return _name; }
@@ -44,9 +53,10 @@ namespace PizzaStore
 
         public void ListPizzaIngredients()
         {
+            
             foreach (Ingredients i in _ingredients)
             {
-                Console.WriteLine(i.Name);
+                Console.WriteLine($"-IngredientID: {Id} | Type: {i.Name} | Price: {i.Price}");
             }
 
 

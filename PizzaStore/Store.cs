@@ -8,202 +8,236 @@ using System.Threading.Tasks;
 namespace PizzaStore
 {
     class Store
-    {
+    {       
+            //Declared here so it can be used by the menu method(Probably not the best practice, but i dont have time to redo it)
+
+           MenuCatalog catalog = new MenuCatalog();
+           CustomerCatalog customerCatalog = new CustomerCatalog();
+           Ingredients ingredient4 = new Ingredients();
+           Ingredients ingredient5 = new Ingredients();
+           Pizza pizza4 = new Pizza();
+           Pizza pizza5 = new Pizza();
+           Order order1 = new Order(21, DateTime.Now);
+           Order order2 = new Order(54, DateTime.Now);
+           Order order3 = new Order(91, DateTime.Now);
+           Customer customer1 = new Customer();
+           Customer customer2 = new Customer();
+           Customer customer3 = new Customer();
         public void Start()
         {
-            //created private class only for this Start class, with all the content so i could call it
-            //here inside MyCode so it would be easier to make this little menu.
-            //bool showMenu = true;
-            //while (showMenu)
-            //{
-            //    showMenu = MainMenu();
-            //}
+           //Object Creation
             Ingredients ingredient1 = new Ingredients(); ingredient1.Name = "Pepperoni"; ingredient1.Price = 8.5;
             Ingredients ingredient2 = new Ingredients(); ingredient2.Name = "Ham"; ingredient2.Price = 10.5;
             Ingredients ingredient3 = new Ingredients(); ingredient3.Name = "PineApple"; ingredient3.Price = 20.5;
+             ingredient4.Name = "Mushroom"; ingredient4.Price = 17.99;
+             ingredient5.Name = "Pepper"; ingredient5.Price = 29.99;
+            
             Pizza pizza1 = new Pizza();
             Pizza pizza2 = new Pizza();
             Pizza pizza3 = new Pizza();
+
+
             pizza1.Size = "Medium";
-            pizza1.Name = $"MegaCool Pizza";
-            pizza1.Price = 10.1;
+            pizza1.Name = $"MegaCoolPizza";
+            pizza1.Price = 10.10;
+            pizza1.Id = 21;
+
             pizza2.Size = "Big";
             pizza2.Name = $"GiantPizza";
             pizza2.Price = 710.79;
+            pizza2.Id = 22;
+
             pizza3.Size = "Small";
             pizza3.Name = $"SmallestPizza";
             pizza3.Price = 5.10;
+            pizza3.Id = 23;
 
+            pizza4.Size = "Big";
+            pizza4.Name = $"ExoticPizza";
+            pizza4.Price = 99.99;
+            pizza4.Id = 31;
+
+            pizza5.Size = "Medium";
+            pizza5.Name = $"SimplePizza";
+            pizza5.Price = 199.99;
+            pizza5.Id = 32;
+
+            
+            customer1.Name = "John Smith";
+            customer1.Email = "john@gmail.com";
+            customer1.Phone = "919191919";
+            customer1.Address = "Denmarkvej";
+            customer1.Id = 1000;
+
+            
+            customer2.Name = "Jane Doe";
+            customer2.Email = "jane@gmail.com";
+            customer2.Phone = "818181818";
+            customer2.Address = "Copenhagenvej";
+            customer2.Id = 1001;
+
+            
+            customer3.Name = "Joseph Mcguire";
+            customer3.Email = "Mcguire@gmail.com";
+            customer3.Phone = "2727272727";
+            customer3.Address = "Swedenvej";
+            customer3.Id = 1002;
+
+           
+            order1.Customer = customer1;
+            order1.AddPizzaToOrder(pizza1.Id,pizza1);
+
+            Order order2 = new Order(54, DateTime.Now);
+            order2.Customer = customer2;
+            order2.AddPizzaToOrder(pizza2.Id, pizza2);
+
+            Order order3 = new Order(91, DateTime.Now);
+            order3.Customer = customer3;
+            order3.AddPizzaToOrder(pizza3.Id, pizza3);
+
+            //Add some default things, so its not empty
             pizza1.AddIngredients(ingredient1);
             pizza1.AddIngredients(ingredient2);
 
-           /* foreach (Ingredients i in pizza1.Ingredients)
-            {
-                Console.WriteLine(i.Name);
-            }*/
+            pizza2.AddIngredients(ingredient2);
 
-           
+            pizza3.AddIngredients(ingredient5);
+
+            pizza4.AddIngredients(ingredient4);
+            pizza4.AddIngredients(ingredient3);
+            pizza4.AddIngredients(ingredient5);
+
+            pizza5.AddIngredients(ingredient1);
+            //Existing Pizzas
+            catalog.AddPizza(pizza1.Id, pizza1);
+            catalog.AddPizza(pizza2.Id, pizza2);
+            catalog.AddPizza(pizza3.Id, pizza3);
+            //Existing Customers
+            customerCatalog.AddCustomer(customer1.Id, customer1);
+            customerCatalog.AddCustomer(customer2.Id, customer2);
             
-            MenuCatalog catalog = new MenuCatalog();
-
-            catalog.AddPizza(1, pizza1);
-            catalog.AddPizza(2, pizza2);
-            catalog.AddPizza(2, pizza3);
-
-            catalog.SearchPizza();
-
+            bool showMenu = true;
+            while (showMenu)
+            {
+                showMenu = MainMenu();
             }
-
-        
-        /* private bool MainMenu()
-         {
-          /*   Ingredients ingredient1 = new Ingredients(); ingredient1.Name = "Pepperoni"; ingredient1.Price = 8.5;
-             Ingredients ingredient2 = new Ingredients(); ingredient2.Name = "Ham"; ingredient2.Price = 10.5;
-             Ingredients ingredient3 = new Ingredients(); ingredient3.Name = "Banana"; ingredient3.Price = 11.5;
-
-             Pizza pizza1 = new Pizza();
-             pizza1.Size = "Medium";
-             pizza1.Name = $"MegaCool Pizza";
-             pizza1.Price = 70.79;
-             pizza1.Ingredients = ingredient1;
-
-             Pizza pizza2 = new Pizza();
-             pizza2.Size = "Small";
-             pizza2.Name = $"SuperJumbo Pizza";
-             pizza2.Price = 40.39;
-             pizza2.Topping = ingredient2;
-
-             Pizza pizza3 = new Pizza();
-             pizza3.Size = "Large";
-             pizza3.Name = $"SuperVegan Pizza";
-             pizza3.Price = 70.60;
-             pizza3.Topping = ingredient3;
-
-             Customer customer1 = new Customer();
-             customer1.Name = "John Smith";
-             customer1.Email = "john@gmail.com";
-             customer1.Phone = "919191919";
-             customer1.Address = "Denmarkvej";
-
-             Customer customer2 = new Customer();
-             customer2.Name = "Jane Doe";
-             customer2.Email = "jane@gmail.com";
-             customer2.Phone = "818181818";
-             customer2.Address = "Copenhagenvej";
-
-             Customer customer3 = new Customer();
-             customer3.Name = "Joseph Mcguire";
-             customer3.Email = "Mcguire@gmail.com";
-             customer3.Phone = "2727272727";
-             customer3.Address = "Swedenvej";
-
-             Order order1 = new Order(1, DateTime.Now);
-             order1.Customer = customer1;
-             order1.Pizza = pizza1;
-
-             Order order2 = new Order(54, DateTime.Now);
-             order2.Customer = customer2;
-             order2.Pizza = pizza2;
-
-             Order order3 = new Order(91, DateTime.Now);
-             order3.Customer = customer3;
-             order3.Pizza = pizza3;
+        }
 
 
-             Console.Clear();
-             Console.Write("------------------------------------------------\n");
-             Console.Write("Welcome to BigMama's pizzeria management program\n");
-             Console.Write("------------------------------------------------\n");
-             Console.Write("\n");
-             Console.Write("\nHere are the options :\n\n");
-             Console.Write("1 -> As the owner, I want to display the ID, name of the pizzas and the total price for a single order\n\n" +
-                           "2 -> As the owner/waiter, I want to display the name of the customer who made a specific order\n\n" +
-                           "3 -> As a customer I want to know the total price\n\n" +
-                           "4 -> As the owner, I want to know the specific order, who ordered it and contact/address details to deliver\n\n" +
-                           "5 -> As a customer I want to know how much I am paying for toppings\n\n" +
-                           "6 -> Exit Program\n\n");
-             Console.Write("\nInput your choice :");
+        private bool MainMenu()
+        {
+            
+            Console.Clear();
+            Console.Write("------------------------------------------------\n");
+            Console.Write("Welcome to BigMama's pizzeria management program\n");
+            Console.Write("------------------------------------------------\n");
+            Console.Write("\n");
+            Console.Write("****************************\n");
+            Console.Write("Pizza Menu Administration\n");
+            Console.Write("****************************\n");
+            Console.Write("1 -> List existing pizzas\n" +
+                          "2 -> Delete a pizza\n" +
+                          "3 -> Create/Add pizza\n" +
+                          "4 -> Update a pizza\n" +
+                          "5 -> Search a pizza\n");
+            Console.Write("****************************\n");
+            Console.Write("Customer Administration\n");
+            Console.Write("****************************\n");
+            Console.Write("6 -> List existing Customers\n" +
+                          "7 -> Delete a Customer\n" +
+                          "8 -> Create/Add Customer\n" +
+                          "9 -> Update a Customer\n" +
+                          "10-> Search a Customer\n");
+            Console.Write("\n\n\nQ -> Enter Q to Exit Program\n\n");
+            Console.Write("\nInput your choice :");
 
 
-             switch (Console.ReadLine())
-             {
-                 case "1":
-                     //1.As the owner, I want to display the ID, name of the pizzas and the total price for a single order
-                     Console.Clear();
-                     Console.WriteLine($"The order ID {order1.OrderId} at time {order1.Date} :\n" +
-                                       $"Pizza name is {order1.Pizza.Name}, with topping {order1.Pizza.Topping}\n" +
-                                       $"Total price of the order with tax+delivery is {order1.CalculateTotalPrice()}\n\n");
-                     Console.WriteLine("Press any key to go back to the menu");
-                     Console.ReadLine();
-                     return true;
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Clear();
+                    catalog.PrintPizzas();
+                    Console.WriteLine("\n\nPress any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                 case "2":
-                     Console.Clear();
-                     //5.As the owner/waiter, I want to display the name of the customer who made a specific order
-                     //Using order1.Customer instead of order1.Customer.Name to take advantage of the override ToString method
-                     Console.WriteLine($"The order {order1.OrderId} was made by the customer {order1.Customer} at {order1.Date}");
-                     Console.WriteLine($"The order {order2.OrderId} was made by the customer {order2.Customer} at {order2.Date}");
-                     Console.WriteLine($"The order {order3.OrderId} was made by the customer {order3.Customer} at {order3.Date}");
-                     Console.WriteLine("\nPress any key to go back to the menu");
-                     Console.ReadLine();
-                     return true;
+                case "2":
+                    Console.Clear();
+                    Console.WriteLine("Please write the ID of the pizza you want to remove");
+                    int intTemp = Convert.ToInt32(Console.ReadLine());
+                    catalog.RemovePizza(intTemp);
+                    Console.WriteLine("\nPress any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                 case "3":
-                     Console.Clear();
-                     //8.As a customer I want to know the total price
-                     Console.WriteLine($"My name is {order1.Customer} and I ordered a {order1.Pizza} that was {order1.Pizza.Price} kr" +
-                                       $"\nplus the {order1.Pizza.Topping} topping which was {order1.Pizza.Topping.Price}kr \n" +
-                                       $"plus 40 kr tax/delivery which led me to pay {order1.CalculateTotalPrice()} kr\n\n");
+                case "3":
+                    Console.Clear();
+                    catalog.AddPizza(pizza4.Id, pizza4);
+                    catalog.AddPizza(pizza5.Id, pizza5);
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                     Console.WriteLine($"My name is {order2.Customer} and I ordered a {order2.Pizza} that was {order2.Pizza.Price} kr" +
-                                       $"\nplus the {order2.Pizza.Topping} topping which was {order2.Pizza.Topping.Price}kr \n" +
-                                       $"plus 40 kr tax/delivery which led me to pay {order2.CalculateTotalPrice()} kr\n\n");
+                case "4":
+                    Console.Clear();
+                    catalog.UpdatePizza();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                     Console.WriteLine($"My name is {order3.Customer} and I ordered a {order3.Pizza} that was {order3.Pizza.Price} kr" +
-                                       $"\nplus the {order3.Pizza.Topping} topping which was {order3.Pizza.Topping.Price}kr \n" +
-                                       $"plus 40 kr tax/delivery which led me to pay {order3.CalculateTotalPrice()} kr\n\n");
-                     Console.WriteLine("Press any key to go back to the menu");
-                     Console.ReadLine();
-                     return true;
+                case "5":
+                    Console.Clear();
+                    catalog.SearchPizza();
 
-                 case "4":
-                     //3.As the owner I want to know the address, contact info of the customer
-                     //and the full description of the order, so I can do the delivery correctly.
-                     Console.Clear();
-                     Console.WriteLine($"The customer {order1.Customer} with the orderID of : {order1.OrderId}, ordered a {order1.Pizza}" +
-                                       $"\n with the {order1.Pizza.Topping} topping, and lives in {order1.Customer.Address} " +
-                                       $"with the contact of {order1.Customer.Phone} and {order1.Customer.Email}\n\n");
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                     Console.WriteLine($"The customer {order2.Customer} with the orderID of : {order2.OrderId}, ordered a {order2.Pizza}" +
-                                       $"\n with the {order2.Pizza.Topping} topping, and lives in {order2.Customer.Address} " +
-                                       $"with the contact of {order2.Customer.Phone} and {order2.Customer.Email}\n\n");
+                case "6":
+                    Console.Clear();
+                    customerCatalog.PrintCustomers();
+                    Console.ReadLine();
+                    return true;
 
-                     Console.WriteLine($"The customer {order3.Customer} with the orderID of : {order3.OrderId}, ordered a {order3.Pizza}" +
-                                       $"\n with the {order3.Pizza.Topping} topping, and lives in {order3.Customer.Address} " +
-                                       $"with the contact of {order3.Customer.Phone} and {order3.Customer.Email}\n\n");
-                     Console.WriteLine("Press any key to go back to the menu");
-                     Console.ReadLine();
-                     return true;
+                case "7":
+                    Console.Clear();
+                    Console.WriteLine("Please write the ID of the Customer you want to remove");
+                    int intTemp2 = Convert.ToInt32(Console.ReadLine());
+                    customerCatalog.RemoveCustomer(intTemp2);
+                    Console.WriteLine("\nPress any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                 case "5":
-                     //7.As a customer I want to know how much I am paying for toppings
-                     Console.Clear();
-                     Console.WriteLine($"{order1.Customer} is paying {order1.Pizza.Topping.Price} kr for {order1.Pizza.Topping} topping.\n\n");
-                     Console.WriteLine($"{order2.Customer} is paying {order2.Pizza.Topping.Price} kr for {order2.Pizza.Topping} topping.\n\n");
-                     Console.WriteLine($"{order3.Customer} is paying {order3.Pizza.Topping.Price} kr for {order3.Pizza.Topping} topping.\n\n");
-                     Console.WriteLine("Press any key to go back to the menu");
-                     Console.ReadLine();
-                     return true;
+                case "8":
+                    Console.Clear();
+                    customerCatalog.AddCustomer(customer3.Id, customer3);
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                 case "6":
-                     return false;
+                case "9":
+                    Console.Clear();
+                    customerCatalog.UpdateCustomer();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-                 default:
-                     Console.WriteLine($"Wrong Option, Please Try Again");
-                     Console.ReadLine();
-                     return true;
+                case "10":
+                    Console.Clear();
+                    customerCatalog.SearchCustomer();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
 
-             } 
-         } */
+
+                case "q":
+                    return false;
+
+                default:
+                    Console.WriteLine($"Wrong Option, Please Try Again");
+                    Console.ReadLine();
+                    return true;
+            }
+        }
     }
 }

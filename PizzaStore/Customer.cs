@@ -12,6 +12,7 @@ namespace PizzaStore
         private string _address;
         private string _phone;
         private string _email;
+        private int _id;
 
         public string Name
         {
@@ -36,6 +37,11 @@ namespace PizzaStore
             set { _email = value; }
         }
 
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         public override string ToString()
         {
             return $"{Name}";

@@ -24,9 +24,9 @@ namespace PizzaStore
             set { _price = value; }
         }
 
-        //public override string ToString()
-        //{
-        //     return $"{Name}";
-        //}
+        public override string ToString()
+        {
+             return $"{Name}";
+        }
     }
 }
