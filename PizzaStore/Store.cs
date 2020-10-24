@@ -9,7 +9,7 @@ namespace PizzaStore
 {
     class Store
     {       
-            //Declared here so it can be used by the menu method(Probably not the best practice, but i dont have time to redo it)
+            //Declared here so it can be used by the menu method(Probably not the best practice, but i don't have time to redo it)
 
            MenuCatalog catalog = new MenuCatalog();
            CustomerCatalog customerCatalog = new CustomerCatalog();
@@ -112,6 +112,7 @@ namespace PizzaStore
             catalog.AddPizza(pizza1.Id, pizza1);
             catalog.AddPizza(pizza2.Id, pizza2);
             catalog.AddPizza(pizza3.Id, pizza3);
+
             //Existing Customers
             customerCatalog.AddCustomer(customer1.Id, customer1);
             customerCatalog.AddCustomer(customer2.Id, customer2);

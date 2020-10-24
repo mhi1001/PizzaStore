@@ -62,7 +62,7 @@ namespace PizzaStore
                 {
                     foreach (Customer c in _customers.Values)
                     {
-                        _ = c.Name == input ? foundName = true : foundName = false;
+                        _ = c.Name.ToLower() == input.ToLower() ? foundName = true : foundName = false;
 
                         if (foundName)
                         {
