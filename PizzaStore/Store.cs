@@ -340,6 +340,13 @@ namespace PizzaStore
                     return true;
 
 
+                case "15":
+                    Console.Clear();
+                    orderCatalog.OrdersTotalPrice();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
 
 
                 case "q":

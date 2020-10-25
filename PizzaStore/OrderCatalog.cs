@@ -103,5 +103,12 @@ namespace PizzaStore
                 Console.WriteLine($"\nID: {item.Key} | Date: {item.Value.Date}  ");
             }
         }
+
+        public void OrdersTotalPrice()
+        {
+            foreach(Order i in _orders.Values)
+                Console.WriteLine($"The orderID: {i.OrderId}, created at {i.Date} has a total price of { i.CalculateTotalPrice()} kr");
+            Console.ReadLine();
+        }
     }
 }
