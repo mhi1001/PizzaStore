@@ -14,6 +14,7 @@ namespace PizzaStore
 
            MenuCatalog catalog = new MenuCatalog();
            CustomerCatalog customerCatalog = new CustomerCatalog();
+           OrderCatalog orderCatalog = new OrderCatalog();
            Ingredients ingredient4 = new Ingredients();
            Ingredients ingredient5 = new Ingredients();
            Pizza pizza4 = new Pizza();
@@ -151,6 +152,13 @@ namespace PizzaStore
                           "8 -> Create/Add Customer\n" +
                           "9 -> Update a Customer\n" +
                           "10-> Search a Customer\n");
+            Console.Write("****************************\n");
+            Console.Write("Order Administration\n");
+            Console.Write("****************************\n");
+            Console.Write("11 -> Add order\n" +
+                          "12 -> Remove order\n" +
+                          "13 -> Print Order\n" +
+                          "14 -> Search Order\n");
             Console.Write("\n\n\nQ -> Enter Q to Exit Program\n\n");
             Console.Write("\nInput your choice :");
 
@@ -275,6 +283,63 @@ namespace PizzaStore
                     Console.WriteLine("Press any key to go back to the menu");
                     Console.ReadLine();
                     return true;
+
+                case "11":
+                    Console.Clear();
+                    orderCatalog.AddOrder(order1.OrderId, order1);
+                    orderCatalog.AddOrder(order2.OrderId, order2);
+                    orderCatalog.AddOrder(order3.OrderId, order3);
+                    Console.WriteLine("\n\nPress any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
+                case "12":
+                    Console.Clear();
+                    Console.WriteLine("Please write the ID of the Order you want to remove");
+                    string input3 = Console.ReadLine();
+                    if (input3 != "")
+                    {
+                        char firstChar3 = input3[0];
+                        bool isNumber = Char.IsDigit(firstChar3);
+                        if (isNumber)
+                        {
+                            int intTemp3 = Convert.ToInt32(input3);
+                            orderCatalog.RemoveOrder(intTemp3);
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please write an ID number");
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please write an ID number");
+                        Console.WriteLine("\nPress any key to go back to the menu");
+                        Console.ReadLine();
+                    }
+
+                    return true;
+
+                case "13":
+                    Console.Clear();
+                    orderCatalog.PrintOrders();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
+
+                case "14":
+                    Console.Clear();
+                    orderCatalog.SearchOrder();
+                    Console.WriteLine("Press any key to go back to the menu");
+                    Console.ReadLine();
+                    return true;
+
+
 
 
                 case "q":
