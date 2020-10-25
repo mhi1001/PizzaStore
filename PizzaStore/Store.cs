@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PizzaStore
@@ -31,6 +32,7 @@ namespace PizzaStore
             Ingredients ingredient3 = new Ingredients(); ingredient3.Name = "PineApple"; ingredient3.Price = 20.5;
              ingredient4.Name = "Mushroom"; ingredient4.Price = 17.99;
              ingredient5.Name = "Pepper"; ingredient5.Price = 29.99;
+             
             
             Pizza pizza1 = new Pizza();
             Pizza pizza2 = new Pizza();
@@ -84,15 +86,15 @@ namespace PizzaStore
             customer3.Id = 1002;
 
            
-            order1.Customer = customer1;
+            order1.AddCustomerToOrder(customer1.Id, customer1);
             order1.AddPizzaToOrder(pizza1.Id,pizza1);
 
             Order order2 = new Order(54, DateTime.Now);
-            order2.Customer = customer2;
+            order2.AddCustomerToOrder(customer2.Id, customer2);
             order2.AddPizzaToOrder(pizza2.Id, pizza2);
 
             Order order3 = new Order(91, DateTime.Now);
-            order3.Customer = customer3;
+            order3.AddCustomerToOrder(customer3.Id, customer3);
             order3.AddPizzaToOrder(pizza3.Id, pizza3);
 
             //Add some default things, so its not empty
@@ -165,10 +167,32 @@ namespace PizzaStore
                 case "2":
                     Console.Clear();
                     Console.WriteLine("Please write the ID of the pizza you want to remove");
-                    int intTemp = Convert.ToInt32(Console.ReadLine());
-                    catalog.RemovePizza(intTemp);
-                    Console.WriteLine("\nPress any key to go back to the menu");
-                    Console.ReadLine();
+                    string input = Console.ReadLine();
+                    if (input != "")
+                    {
+                        char firstChar = input[0];
+                        bool isNumber = Char.IsDigit(firstChar);
+                        if (isNumber)
+                        {
+                            int intTemp = Convert.ToInt32(input);
+                            catalog.RemovePizza(intTemp);
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please write an ID number");
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please write an ID number");
+                        Console.WriteLine("\nPress any key to go back to the menu");
+                        Console.ReadLine();
+                    }
+
                     return true;
 
                 case "3":
@@ -203,10 +227,32 @@ namespace PizzaStore
                 case "7":
                     Console.Clear();
                     Console.WriteLine("Please write the ID of the Customer you want to remove");
-                    int intTemp2 = Convert.ToInt32(Console.ReadLine());
-                    customerCatalog.RemoveCustomer(intTemp2);
-                    Console.WriteLine("\nPress any key to go back to the menu");
-                    Console.ReadLine();
+                    string input2 = Console.ReadLine();
+                    if (input2 != "")
+                    {
+                        char firstChar2 = input2[0];
+                        bool isNumber = Char.IsDigit(firstChar2);
+                        if (isNumber)
+                        {
+                            int intTemp2 = Convert.ToInt32(input2);
+                            customerCatalog.RemoveCustomer(intTemp2);
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please write an ID number next time");
+                            Console.WriteLine("\nPress any key to go back to the menu");
+                            Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please write an ID number");
+                        Console.WriteLine("\nPress any key to go back to the menu");
+                        Console.ReadLine();
+                    }
+
                     return true;
 
                 case "8":

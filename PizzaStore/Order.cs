@@ -11,15 +11,14 @@ namespace PizzaStore
         private int _orderId;
         private DateTime _date;
         
-        private Customer _customer;
-        
+        private Dictionary<int, Customer> _customer;
         private Dictionary<int, Pizza> _pizza;
         
         
 
         public Order(int id, DateTime date)
         {
-            _customer = new Customer();
+            _customer = new Dictionary<int, Customer>();
             _pizza = new Dictionary<int, Pizza>();
             _orderId = id;
             _date = date;
@@ -36,7 +35,7 @@ namespace PizzaStore
             set { _date = value; }
         }
 
-        public Customer Customer
+        public Dictionary<int, Customer> Customer
         {
             get { return _customer; }
             set { _customer = value; }
@@ -60,6 +59,11 @@ namespace PizzaStore
         public void AddPizzaToOrder(int key, Pizza pizza)
         {
             Pizza.Add(key, pizza);
+        }
+
+        public void AddCustomerToOrder(int key, Customer customer)
+        {
+            Customer.Add(key, customer);
         }
           public override string ToString()
         {

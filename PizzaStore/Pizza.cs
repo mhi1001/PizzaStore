@@ -56,7 +56,7 @@ namespace PizzaStore
             
             foreach (Ingredients i in _ingredients)
             {
-                Console.WriteLine($"-IngredientID: {Id} | Type: {i.Name} | Price: {i.Price}");
+                Console.WriteLine($"-> Ingredient Type: {i.Name} | Price: {i.Price}");
             }
 
 
