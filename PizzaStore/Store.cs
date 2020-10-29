@@ -43,17 +43,17 @@ namespace PizzaStore
             pizza1.Size = "Medium";
             pizza1.Name = $"MegaCoolPizza";
             pizza1.Price = 10.10;
-            pizza1.Id = 21;
+            pizza1.Id = 59;
 
             pizza2.Size = "Big";
             pizza2.Name = $"GiantPizza";
             pizza2.Price = 710.79;
-            pizza2.Id = 22;
+            pizza2.Id = 6666;
 
             pizza3.Size = "Small";
             pizza3.Name = $"SmallestPizza";
             pizza3.Price = 5.10;
-            pizza3.Id = 23;
+            pizza3.Id = 7777;
 
             pizza4.Size = "Big";
             pizza4.Name = $"ExoticPizza";
@@ -89,6 +89,9 @@ namespace PizzaStore
            
             order1.AddCustomerToOrder(customer1.Id, customer1);
             order1.AddPizzaToOrder(pizza1.Id,pizza1);
+            order1.AddPizzaToOrder(pizza2.Id, pizza2);
+            order1.AddPizzaToOrder(pizza3.Id, pizza3);
+
 
             Order order2 = new Order(54, DateTime.Now);
             order2.AddCustomerToOrder(customer2.Id, customer2);

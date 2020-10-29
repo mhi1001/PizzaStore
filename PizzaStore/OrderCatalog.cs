@@ -23,8 +23,15 @@ namespace PizzaStore
         {
             if (_orders.ContainsKey(userInput))
             {
-                Console.WriteLine($"The order with the ID: {userInput}, created on the {_orders[userInput].Date} was removed");
+               
+                Console.WriteLine($"The order with the ID: {userInput}, created on the {_orders[userInput].Date}, which had the pizzas:\n ");
+                foreach (Pizza p in _orders[userInput].Pizza.Values)
+                {
+                    Console.WriteLine($"{p.Name} with the ID : {p.Id}");
+                }
                 _orders.Remove(userInput);
+                //_orders[userInput].Pizza.Values
+
             }
             else
             {
@@ -59,7 +66,7 @@ namespace PizzaStore
                 char firstChar = input[0];
                 bool isNumber = Char.IsDigit(firstChar);
                 bool foundId = false;
-                bool foundName = false;
+              //  bool foundName = false;
 
                 if (isNumber)
                 {
@@ -106,7 +113,7 @@ namespace PizzaStore
 
         public void OrdersTotalPrice()
         {
-            foreach(Order i in _orders.Values)
+            foreach (Order i in _orders.Values)
                 Console.WriteLine($"The orderID: {i.OrderId}, created at {i.Date} has a total price of { i.CalculateTotalPrice()} kr");
             Console.ReadLine();
         }
