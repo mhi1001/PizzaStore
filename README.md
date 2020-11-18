@@ -1,3 +1,3 @@
 # PizzaStore
 
-Project to learn about several c# RazorPages concepts.
+Project to learn about several c#.
