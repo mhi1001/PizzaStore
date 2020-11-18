@@ -1,3 +1,3 @@
 # PizzaStore
 
-Project to learn about several c#.
+Project to learn about c#.
